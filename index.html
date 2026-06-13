@@ -41,9 +41,8 @@
 
       window.addEventListener('resize', resizeCanvas);
 
-      const now = Date.now()
-
       function gameLoop() {
+        const now = Date.now()
         ctx.fillStyle = "white"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
@@ -52,9 +51,9 @@
           let ageInSeconds = (now - s.createdAt) / 1000
           if (ageInSeconds < 10) {
             ctx.fillStyle = "blue"
-          else if (ageInSeconds < 20) {
+          } else if (ageInSeconds < 20) {
             ctx.fillStyle = "green"
-          else {
+          } else {
             squares.splice(i, 1)
             i--
             continue
