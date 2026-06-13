@@ -23,6 +23,17 @@
       const canvas = document.getElementById("gameCanvas")
       const ctx = canvas.getContext("2d")
 
+      const stage0 = new Image()
+      const stage1 = new Image()
+      const stage2 = new Image()
+      const stage3 = new Image()
+      const stage4 = new Image()
+      stage0.src = "images/stage0.png"
+      stage1.src = "images/stage1.png"
+      stage2.src = "images/stage2.png"
+      stage3.src = "images/stage3.png"
+      stage4.src = "images/stage4.png"
+
       let squares = []
       
       function resizeCanvas() {
@@ -66,15 +77,21 @@
           let s = squares[i]
           let ageInSeconds = (now - s.createdAt) / 1000
           if (ageInSeconds < 10) {
-            ctx.fillStyle = "blue"
+            ctx.drawImage(stage0, s.x - 25, s.y - 25, 50, 50)
           } else if (ageInSeconds < 20) {
-            ctx.fillStyle = "green"
+            ctx.drawImage(stage1, s.x - 25, s.y - 25, 50, 50)
+          } else if (ageInSeconds < 30) {
+            ctx.drawImage(stage2, s.x - 25, s.y - 25, 50, 50)
+          } else if (ageInSeconds < 40) {
+            ctx.drawImage(stage3, s.x - 25, s.y - 25, 50, 50)
+          } else if (ageInSeconds < 50) {
+            ctx.drawImage(stage4, s.x - 25, s.y - 25, 50, 50)
           } else {
             squares.splice(i, 1)
             i--
             continue
           }
-          ctx.fillRect(s.x - 25, s.y - 25, 50, 50)
+          ctx.drawImage(s.x - 25, s.y - 25, 50, 50)
         }
 
         requestAnimationFrame(gameLoop)
