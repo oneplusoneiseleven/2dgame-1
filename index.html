@@ -26,8 +26,8 @@
       let squares = []
       
       function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
       }
 
       resizeCanvas();
@@ -36,8 +36,24 @@
       let squareY = canvas.height / 2
 
       window.addEventListener('mousedown', (event) => {
-        squares.push({ x: event.clientX, y: event.clientY, createdAt: Date.now() });
-      });
+        let newX = event.clientX
+        let newY = event.clientY
+        let canPlace = true
+
+        for (i = 0; i < squares.length; i++) {
+          let s = squares[i]
+          let dx = Math.abs(newX - s.x)
+          let dy = Math.abs(newY - s.y)
+
+          if (dx < 50 && dy < 50) {
+            canPlace = false
+            break
+          }
+        }
+        if (canPlace) {
+          squares.push({ x: event.clientX, y: event.clientY, createdAt: Date.now() })
+        }
+      })
 
       window.addEventListener('resize', resizeCanvas);
 
