@@ -4,6 +4,17 @@
     <title>
       2D Game Test
     </title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            background: #ddd; 
+        }
+        canvas { 
+            display: block; 
+        }
+    </style>
   </head>
   <body>
     <canvas id="gameCanvas" width="800" height = "600" ></canvas>
@@ -11,6 +22,15 @@
     <script>
       const canvas = document.getElementById("gameCanvas")
       const ctx = canvas.getContext("2d")
+      
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      resizeCanvas();
+
+      window.addEventListener('resize', resizeCanvas);
 
       let x = 0
 
@@ -19,7 +39,7 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
         ctx.fillStyle = 'blue';
-        ctx.fillRect(x, 100, 50, 50)
+        ctx.fillRect(x, canvas.height / 2 - 25, 50, 50);
         x += 1
 
         requestAnimationFrame(gameLoop)
