@@ -30,6 +30,14 @@
 
       resizeCanvas();
 
+      let squareX = canvas.width / 2
+      let squareY = canvas.height / 2
+
+      window.addEventListener('mousedown', (event) => {
+        squareX = event.clientX;
+        squareY = event.clientY;
+      });
+
       window.addEventListener('resize', resizeCanvas);
 
       let x = 0
@@ -39,8 +47,7 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
         ctx.fillStyle = 'blue';
-        ctx.fillRect(x, canvas.height / 2 - 25, 50, 50);
-        x += 1
+        ctx.fillRect(squareX - 25, squareY - 25, 50, 50);
 
         requestAnimationFrame(gameLoop)
       }
