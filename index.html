@@ -78,15 +78,15 @@
           let s = squares[i]
           let ageInSeconds = (now - s.createdAt) / 1000
           if (ageInSeconds < 10) {
-            ctx.drawImage(stage0, s.x - 25, s.y - 25, 50, 50)
+            ctx.drawImage(stage0, s.x - 25, s.y - 25, 48, 48)
           } else if (ageInSeconds < 20) {
-            ctx.drawImage(stage1, s.x - 25, s.y - 25, 50, 50)
+            ctx.drawImage(stage1, s.x - 25, s.y - 25, 48, 48)
           } else if (ageInSeconds < 30) {
-            ctx.drawImage(stage2, s.x - 25, s.y - 25, 50, 50)
+            ctx.drawImage(stage2, s.x - 25, s.y - 25, 48, 48)
           } else if (ageInSeconds < 40) {
-            ctx.drawImage(stage3, s.x - 25, s.y - 25, 50, 50)
+            ctx.drawImage(stage3, s.x - 25, s.y - 25, 48, 48)
           } else if (ageInSeconds < 50) {
-            ctx.drawImage(stage4, s.x - 25, s.y - 25, 50, 50)
+            ctx.drawImage(stage4, s.x - 25, s.y - 25, 48, 48)
           } else {
             squares.splice(i, 1)
             i--
