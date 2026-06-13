@@ -12,12 +12,15 @@
       const canvas = document.getElementById("gameCanvas")
       const ctx = canvas.getContext("2d")
 
+      let x = 0
+
       function gameLoop() {
         ctx.fillStyle = "white"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
         ctx.fillStyle = 'blue';
-        ctx.fillRect(100, 100, 50, 50)
+        ctx.fillRect(x, 100, 50, 50)
+        x += 1
 
         requestAnimationFrame(gameLoop)
       }
