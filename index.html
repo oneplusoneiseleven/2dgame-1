@@ -36,20 +36,29 @@
       let squareY = canvas.height / 2
 
       window.addEventListener('mousedown', (event) => {
-        squares.push({ x: event.clientX, y: event.clientY });
+        squares.push({ x: event.clientX, y: event.clientY, createdAt: Date.now() });
       });
 
       window.addEventListener('resize', resizeCanvas);
 
-      let x = 0
+      const now = Date.now()
 
       function gameLoop() {
         ctx.fillStyle = "white"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-        ctx.fillStyle = 'blue';
         for (let i = 0; i < squares.length; i++) {
           let s = squares[i]
+          let ageInSeconds = (now - s.createdAt) / 1000
+          if (ageInSeconds < 10) {
+            ctx.fillStyle = "blue"
+          else if (ageInSeconds < 20) {
+            ctx.fillStyle = "green"
+          else {
+            squares.splice(i, 1)
+            i--
+            continue
+          }
           ctx.fillRect(s.x - 25, s.y - 25, 50, 50)
         }
 
