@@ -67,7 +67,7 @@
           let ageInSeconds = (Date.now() - s.createdAt) / 1000
 
           if (dx < 50 && dy < 50) {
-            if (dx < 25 && dy < 25 && ageInSeconds < 50) {
+            if (dx < 25 && dy < 25 && ageInSeconds > 40) {
               squares.splice(i, 1)
               i--
             }
@@ -104,12 +104,8 @@
             ctx.drawImage(stage2, s.x - 25, s.y - 25, 48, 48)
           } else if (ageInSeconds < 40) {
             ctx.drawImage(stage3, s.x - 25, s.y - 25, 48, 48)
-          } else if (ageInSeconds < 50) {
-            ctx.drawImage(stage4, s.x - 25, s.y - 25, 48, 48)
           } else {
-            squares.splice(i, 1)
-            i--
-            continue
+            ctx.drawImage(stage4, s.x - 25, s.y - 25, 48, 48)
           }
         }
 
