@@ -64,8 +64,13 @@
           let s = squares[i]
           let dx = Math.abs(newX - s.x)
           let dy = Math.abs(newY - s.y)
+          let ageInSeconds = (Date.now() - s.createdAt) / 1000
 
           if (dx < 50 && dy < 50) {
+            if (dx < 25 && dy < 25 && ageInSeconds < 50) {
+              squares.splice(i, 1)
+              i--
+            }
             canPlace = false
             break
           }
