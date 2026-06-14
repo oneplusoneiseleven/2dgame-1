@@ -60,7 +60,7 @@
         let newY = event.clientY
         let canPlace = true
 
-        for (i = 0; i < squares.length; i++) {
+        for (let i = 0; i < squares.length; i++) {
           let s = squares[i]
           let dx = Math.abs(newX - s.x)
           let dy = Math.abs(newY - s.y)
@@ -87,8 +87,6 @@
         }
 
         const now = Date.now()
-        ctx.fillStyle = "white"
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
 
         for (let i = 0; i < squares.length; i++) {
           let s = squares[i]
