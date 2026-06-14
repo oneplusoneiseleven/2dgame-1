@@ -35,6 +35,14 @@
       stage3.src = "images/stage3.png"
       stage4.src = "images/stage4.png"
 
+      const bgImg = new Image()
+      bgImg.src = "images/bgImg.png"
+      let pattern = null
+
+      bgImg.onload = () => {
+        pattern = ctx.createPattern(bgImg, 'repeat')
+      }
+
       let squares = []
       
       function resizeCanvas() {
@@ -70,6 +78,14 @@
       window.addEventListener('resize', resizeCanvas);
 
       function gameLoop() {
+        if (pattern) {
+          ctx.fillStyle = pattern
+         ctx.fillRect(0, 0, canvas.width, canvas.height)
+        } else {
+          ctx.fillStyle = 'white'
+          ctx.fillRect(0, 0, canvas.width, canvas.height)
+        }
+
         const now = Date.now()
         ctx.fillStyle = "white"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
