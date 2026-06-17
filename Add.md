@@ -1,0 +1,3 @@
+- Only get rid of thing when clicked
+- Add dirt background
+- Add hotbar to equip more stuff

@@ -35,6 +35,10 @@
       stage3.src = "images/stage3.png"
       stage4.src = "images/stage4.png"
 
+      const coinImg = new Image()
+      coinImg.src = "images/coin.img"
+      let coins = 0
+
       const bgImg = new Image()
       bgImg.src = "images/bgImg.png"
       let pattern = null
@@ -70,6 +74,7 @@
             if (dx < 25 && dy < 25 && ageInSeconds > 40) {
               squares.splice(i, 1)
               i--
+              coins++
             }
             canPlace = false
             break
@@ -97,17 +102,30 @@
           let s = squares[i]
           let ageInSeconds = (now - s.createdAt) / 1000
           if (ageInSeconds < 10) {
-            ctx.drawImage(stage0, s.x - 25, s.y - 25, 48, 48)
+            ctx.drawImage(stage0, s.x - 25, s.y - 25, 50, 50)
           } else if (ageInSeconds < 20) {
-            ctx.drawImage(stage1, s.x - 25, s.y - 25, 48, 48)
+            ctx.drawImage(stage1, s.x - 25, s.y - 25, 50, 50)
           } else if (ageInSeconds < 30) {
-            ctx.drawImage(stage2, s.x - 25, s.y - 25, 48, 48)
+            ctx.drawImage(stage2, s.x - 25, s.y - 25, 50, 50)
           } else if (ageInSeconds < 40) {
             ctx.drawImage(stage3, s.x - 25, s.y - 25, 48, 48)
           } else {
             ctx.drawImage(stage4, s.x - 25, s.y - 25, 48, 48)
           }
         }
+
+        const hudPadding = 20; 
+        const bottom = canvas.height - hudPadding;
+        const left = hudPadding;
+
+        ctx.drawImage(coinImg, left, bottom - 48, 48, 48); 
+
+        ctx.font = 'bold 48px sans-serif'; 
+
+        ctx.fillStyle = '#FFD700';
+        ctx.textBaseline = 'middle';
+
+        ctx.fillText(coins, left + 80, bottom - 32); 
 
         requestAnimationFrame(gameLoop)
       }
